@@ -1,6 +1,6 @@
 # Microbes Collide Project Setup
 
-## Install QIIME (mac)
+## Install QIIME (Mac; prereq: Anaconda3)
 
     wget https://data.qiime2.org/distro/core/qiime2-2019.7-py36-osx-conda.yml
     conda env create -n qiime2-2019.7 --file qiime2-2019.7-py36-osx-conda.yml
@@ -15,10 +15,10 @@ conda activate qiime2-2019.7
 
 CSI Data: https://github.com/PeraltaLab/CSI_Dispersal
 https://www.ncbi.nlm.nih.gov/bioproject/PRJNA615001
-Use link to navigate to the bio project and the new SRA download page
+Use link to navigate to the bio project and the new SRA download page (SRA Run Selector Tool)
 Get two files: 
-CSI_SRR_Acc_List.txt
-CSI_SraRunTable.txt
+CSI_SRR_Acc_List.txt (Accession List, rename to add CSI_)
+CSI_SraRunTable.txt (Metadata, rename to add CSI_)
 
 SRA Toolkit Instructions: https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit
 
@@ -31,7 +31,8 @@ tar -vxzf sratoolkit.tar.gz
 export PATH=$PATH:$PWD/sratoolkit.2.10.7-ubuntu64/bin
 
 configure SRA Toolkit
-vdb-config -i # Reset the download folder (use external since it is large)
+# You don't need to do this
+# vdb-config -i # Reset the download folder (use external since it is large)
 
 Download the data:
 while read p; do
@@ -48,7 +49,7 @@ mkdir raw
 mkdir analysis
 mv ./*.fastq ./raw
 
-Using CSI_SraRunTable.txt create manifest 
+Using CSI_SraRunTable.txt create manifest (this must be done manually)
 must use absolute path 
 e.g. $PWD
 
